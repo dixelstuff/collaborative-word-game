@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f4f3ec">
+  <title>Common Ground · A shared word mystery</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="masthead"><a class="brand" href="./"><span class="brand-mark" aria-hidden="true">↗↘</span> COMMON GROUND</a><span class="edition">THE COLLABORATIVE WORD EXPERIMENT <span>NO. 001</span></span><button id="help" class="text-button">How to play <span>↗</span></button></header>
+  <main>
+    <section class="intro"><div><p class="eyebrow">DIFFERENT WORDS. ONE DESTINATION.</p><h1>Meet in the <em>unknown.</em></h1><p class="lede">Follow your associations. Borrow each other’s clues.<br>Find the one word that brings it all together.</p></div><div class="new-controls"><label for="player-count">YOUR TEAM</label><div class="segmented" id="player-count" role="group" aria-label="Number of players"><button type="button" data-count="2" aria-pressed="true">2 players</button><button type="button" data-count="3" aria-pressed="false">3 players</button></div><button id="new-game" class="primary">New mystery <span>↗</span></button></div></section>
+    <div id="banner" role="status" aria-live="polite">Preparing your first mystery…</div>
+    <section id="result" class="result" hidden aria-live="polite"></section>
+    <div class="game-grid">
+      <section class="exploration panel"><div class="panel-heading"><div><p class="eyebrow">THE SHARED LANDSCAPE</p><h2>Every word is a clue.</h2></div><div class="word-count"><strong id="word-count">0</strong><span>WORDS LANDED</span></div></div>
+        <div class="map-key"><span><i class="dot indigo"></i> Indigo</span><span><i class="dot amber"></i> Amber</span><span id="rose-key" hidden><i class="dot rose"></i> Rose</span><span class="key-note">Tap one of your words to launch from it</span></div>
+        <div class="landscape" id="landscape" aria-label="Shared map of discovered words"></div>
+        <div class="distance-key"><span>DISTANT ASSOCIATIONS</span><span class="distance-line"></span><span>CLOSER TO THE MYSTERY →</span></div>
+        <div id="turn-strip" class="turn-strip"><div class="turn-icon">↗</div><div><p class="eyebrow" id="turn-label">INDIGO’S TURN</p><p id="launch-label">Choosing a starting point…</p></div><span class="turn-hint">A landing passes the turn.<br>A weak connection lets you try again.</span></div>
+        <form id="play-form" class="play-form"><label class="sr-only" for="word">Play a connected word</label><input id="word" name="word" placeholder="Where does this word take you?" autocomplete="off" autocapitalize="none" spellcheck="false" maxlength="40" required><button class="primary" type="submit">Connect <span>↗</span></button></form>
+        <p id="feedback" class="feedback" role="status" aria-live="polite">Only landed words reveal how close they are. Keep comparing clues.</p>
+      </section>
+      <aside class="suspects panel"><div class="panel-heading"><div><p class="eyebrow">THINK TOGETHER</p><h2>The suspects.</h2></div><span class="board-icon" aria-hidden="true">✳</span></div><p class="board-note">A shared space for your hunches.<br>Writing here never tests a word.</p><form id="suspect-form"><label class="sr-only" for="suspect">Add a suspect</label><input id="suspect" placeholder="A possible mystery word…" autocomplete="off" maxlength="40" required><button aria-label="Add suspect" type="submit">+</button></form><ul id="suspects-list"></ul><div id="empty-board" class="empty-board"><span>?</span><p>A tiger. Some clothes.<br>Something <em>striped?</em></p><small>The best hunches connect your clues.</small></div><p class="board-footer">☆ Save a favourite · ⊘ Rule one out</p></aside>
+    </div>
+    <section class="collections" id="collections" aria-label="Players’ available launch words"></section>
+    <details class="lab" id="lab"><summary>Developer notebook <span>Reveal the mystery, inspect the rules, or set up a test</span></summary><div class="lab-body"><p>Opening this notebook alone reveals nothing. Revealing the target marks this round as a test.</p><div class="lab-actions"><button id="reveal" class="secondary">Reveal target & diagnostics</button><button id="export" class="secondary" disabled>Download diagnostics</button><span id="debug-target"></span></div><form id="override-form"><label>Mystery word<input id="override-target" placeholder="Automatic" autocomplete="off"></label><label>Starting words (comma separated)<input id="override-starts" placeholder="Automatic balanced starts" autocomplete="off"></label><label>Random seed<input id="override-seed" placeholder="Optional integer" type="number" step="1"></label><button type="submit" class="secondary">Start test mystery ↗</button></form><p class="lab-note">Overrides bypass balance selection. All words must exist in the model; starting words must be distinct and outside the finish zone.</p><pre id="diagnostics" hidden></pre></div></details>
+    <footer><span>COMMON GROUND <b> / </b> LOCAL PLAYTEST</span><span id="model-note">Real word vectors. Shared discoveries.</span></footer>
+  </main>
+  <dialog id="help-dialog"><button class="dialog-close" id="close-help" aria-label="Close instructions">×</button><p class="eyebrow">A MYSTERY FOR TWO. OR THREE.</p><h2>Follow the words.<br>Find your common ground.</h2><ol><li>Each player starts with a different word. You’re all looking for the same hidden mystery.</li><li>On your turn, select any word in your own collection. Try a word that connects to it.</li><li>A strong enough connection lands. Its position shows how close it is to the mystery, and the turn passes.</li><li>A weak connection reveals nothing. Keep trying from that word, or choose another launch point.</li><li>Compare everyone’s clues. Use the suspects board to gather hunches, then play them when you can make the connection.</li><li>Land on the mystery, or a very close neighbour, to solve it together. Only successful words count.</li></ol><p class="board-note">Left and right show proximity, with Word Golf’s curved distance scale. Vertical spacing separates words for readability. A backward move can be a useful new route.</p><button class="primary" id="understood">Let’s find it ↗</button></dialog>
+    <script type="module" src="app.js"></script>
+</body>
+</html>

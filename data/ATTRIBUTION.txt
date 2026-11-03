@@ -1,0 +1,8 @@
+Word vectors: Stanford GloVe 6B 300d, Wikipedia 2014 + Gigaword 5.
+https://nlp.stanford.edu/projects/glove/
+Pretrained vectors: Open Data Commons PDDL 1.0.
+https://opendatacommons.org/licenses/pddl/1-0/
+Vocabulary selection uses wordfreq 3.1.1 (frequency data CC BY-SA 4.0) and Princeton WordNet.
+https://github.com/rspeer/wordfreq
+https://wordnet.princeton.edu/
+See README.md for vocabulary processing and source attribution.
